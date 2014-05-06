@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Pet Clinic</title>
+<meta charset="utf-8">
+
+
+
+<script src="{{asset("front/js/jquery.easing.1.3.js")}}"></script>
+<script src="{{asset("front/js/tms-0.4.1.js")}}"></script>
+<script src="{{asset("front/js/slider.js")}}"></script>
+
+
+<link  rel="stylesheet" href="{{asset("css/anim.css")}}">
+	
+ <link rel="stylesheet" href="{{asset("front/css/style.css")}}">
+<script src="{{asset("front/js/jquery-1.7.1.min.js")}}"></script>
+<script src="{{asset("front/js/superfish.js")}}"></script>
+<link href="{{asset("front/css/css2/bootstrap2.css")}}" rel="stylesheet">
+
+	<link rel="stylesheet" href="{{asset("front/css/css2/icon/font-awesome.css")}}">
+    
+<script>
+$(function(){
+	function equalHeight(group) {
+		var tallest = 0;
+		group.each(function() {
+			var thisHeight = $(this).height();
+			if(thisHeight > tallest) {
+				tallest = thisHeight;
+			}
+		});
+		group.height(tallest);
+	}	
+	equalHeight($(".box-1 .inner"));
+})
+</script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" href="css/ie.css"> 
+<![endif]-->
+</head>
+<body id="page1">
+<!-- Header -->
+
+
+
+
+<header>
+<!--SpeedBar Start-->
+     <div class="speedbar">
+     <div class="speedbar-content">
+     
+     <ul class="menu-drop">
+     			<li><a href="#"><i class="icon-chevron-down"></i></a>
+               		<ul>
+                        <li><a href="dashboard.html">Animaux</a></li>
+                        <li><a href="charts.html">Services</a></li>
+                        <li><a href="gallery.html">Pensions</a></li>
+                        <li><a href="calendar.html">Adoption</a></li>
+						
+                        
+                    </ul>  
+                </li>
+     </ul>
+     
+     <ul class="menu-speedbar">
+    	 <li><a href="dashboard.html" Class="btn"><font color="black">Connexion</font></a></li>
+    	 <li><a href="charts.html" Class="btn"><font color="black">Inscription</font></a></li>
+         
+     </ul>
+
+     
+     </div>
+     </div>
+     <!--SpeedBar END-->
+
+
+  <div class="inner">
+    <h1 class="logo"><a href="index.html">Sos Animaux</a></h1>
+    <div class="fright">
+      <div class="header-meta">
+        
+        <div class="col-elem"> <img src="{{asset("front/images/catwavin.png")}}" width="50px" height="50px"> </div>
+      </div>
+      <nav>
+        <ul class="sf-menu">
+          <li class="current"><a href="{{path('index')}}">Accueil</a></li>
+          <li><a href="{{path('about')}}">A Propos</a></li>
+          <li> <a href="{{path('services')}}">services</a>
+            <ul>
+              <li><a href="#">Pensions</a></li>
+              <li><a href="#">Prestataires</a></li>
+              
+                
+            </ul>
+          </li>
+          <li><a href="{{path('animaux')}}">Animaux</a>
+		  <ul>
+              <li><a href="#">Consultation</a></li>
+              <li><a href="#">Adoption</a></li>
+			  <li><a href="#">Recherche</a></li>
+              
+                
+            </ul>
+			</li>
+          <li><a href="{{path('contact')}}">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="pulse">
+    <a href="#consult"> <center> <img class="bounce" src="{{asset("images/cattt.png")}}"  alt=""> </a>
+    <a href="#consult"> <img class="bounce" src="{{asset("images/chick.png")}}"  alt="" href="rabit"> </a>
+    <a href="#consult"> <img class="bounce" src="{{asset("images/rabit.png")}}"  alt=""> </a>
+   
+   
+   </center>
+     <img class="slideExpandUp"  src="{{asset("images/bienvenue.png")}}" width="400px" height="200px" >
+      <img class="slideExpandUp"  src="{{asset("images/cheznous.png")}}" width="400px" height="200px" >
+  <img class="slideExpanddown"  src="{{asset("images/ami.png")}}" width="400px" height="200px" >
+ 
+  </div>
+     
+</header>
+<!-- Content -->
+<section id="content" style="background:url(../images/body-bg.gif) 50% 0;">
+        
+
+    
+    
+    <div class="box-1" id="consult">
+        <img class="floating"  src="{{asset("images/pasdemaison.png")}}" width="600px" height="600px" >
+        <img class="floating"  src="{{asset("images/sansrefugechick.png")}}" width="600px" height="600px" align="right" >
+        
+     
+   
+        
+        <img class="floating"  src="{{asset("images/jesuisperdu.png")}}" width="600px" height="600px"  align="left" >
+        
+        <img class="floating"  src="{{asset("images/consulteznous.png")}}" width="600px" height="600px"  align="right" >
+        
+    
+    
+       </div> 
+    
+    
+    
+    
+    
+    
+    
+    
+   <style>
+           
+            
+            .videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 99%;
+	height: 50%;
+}
+            </style>
+    
+  </section>
+<!-- Footer -->
+<footer>
+  <div class="copyright"> &copy; 2012 <strong class="footer-logo">Pet clinic</strong>
+    <div>Website Template by <a target="_blank" href="http://www.templatemonster.com/">TemplateMonster.com</a></div>
+  </div>
+  <ul class="social-list">
+    <li><a href="#"><img src="{{asset("front/images/social-link-1.jpg")}}" alt=""></a></li>
+    <li><a href="#"><img src="{{asset("front/images/social-link-2.jpg")}}" alt=""></a></li>
+    <li><a href="#"><img src="{{asset("front/images/social-link-3.jpg")}}" alt=""></a></li>
+    <li><a href="#"><img src="{{asset("front/images/social-link-4.jpg")}}" alt=""></a></li>
+  </ul>
+</footer>
+
+
+
+
+
+
+</body>
+</html>

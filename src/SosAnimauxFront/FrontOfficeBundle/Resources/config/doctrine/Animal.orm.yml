@@ -1,0 +1,106 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Animal:
+    type: entity
+    table: animal
+    indexes:
+        id_adh:
+            columns:
+                - id_adh
+        adr:
+            columns:
+                - adr
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        espece:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        age:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        race:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        poids:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        couleur:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        vaccin:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        etat:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        autre:
+            type: string
+            nullable: false
+            length: 600
+            fixed: false
+            comment: ''
+        photo:
+            type: blob
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        sexe:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+    manyToOne:
+        idAdh:
+            targetEntity: Adherant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_adh:
+                    referencedColumnName: id
+            orphanRemoval: false
+        adr:
+            targetEntity: Adresse
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adr:
+                    referencedColumnName: ville
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+<?php
+
+namespace SosAnimauxFront\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Note
+ *
+ * @ORM\Table(name="note", indexes={@ORM\Index(name="id_pension", columns={"id_pension"})})
+ * @ORM\Entity
+ */
+class Note
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=false)
+     */
+    private $note;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Pensions
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Pensions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pension", referencedColumnName="id")
+     * })
+     */
+    private $idPension;
+
+
+}

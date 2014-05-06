@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sweet Dreams - Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{asset("css/style.css")}}" rel="stylesheet">
+    <link href="{{asset("css/bootstrap.css")}}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{asset("css/jquery-ui-1.8.16.custom.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/fullcalendar.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/chosen.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/datepicker.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/colorpicker.css")}}">
+    <link rel="stylesheet" href="{{asset("css/glisse.css?1.css")}}">
+    <link rel="stylesheet" href="{{asset("css/jquery.jgrowl.css")}}">
+        <link rel="stylesheet" href="{{asset("js/elfinder/css/elfinder.css")}}" media="screen">
+
+    
+    <link rel="stylesheet" href="{{asset("css/jquery.tagsinput.css")}}" />
+    <link rel="stylesheet" href="{{asset("css/demo_table.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/jquery.jscrollpane.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/validationEngine.jquery.css")}}">
+    <link rel="stylesheet" href="{{asset("css/jquery.stepy.css")}}" />
+    
+	<link rel="stylesheet" href="{{asset("css/icon/font-awesome.css")}}">
+    <link rel="stylesheet" href="{{asset("css/bootstrap-responsive.css")}}">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/excanvas.min.js"></script><![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{asset("/images/icons/favicon.ico")}}">
+  </head>
+
+  <body onload="initialize()">
+
+	<!--Header Start-->
+	<div class="header" >
+    		
+           <a href="dashboard.html" class="logo"><h1>Le Nom De l'adherant</h1></a>
+           
+           <div class="pull-right">
+           
+           
+            
+           <!--Button User Start-->  
+		   <div class="btn-group pull-right" >
+            <a class="btn btn-profile dropdown-toggle" id="button-profile" data-toggle="dropdown" href="#">
+              <span class="name-user"><strong>Bienvenue</strong>, Nom de l'adherent</span> 
+              <span class="avatar"><img src="images/users/1.jpg" alt="" ></span> 
+              <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu" id="prof_dropdown">
+            <div class="item_m"><span class="caret"></span></div>
+            <ul class="clear_ul" >
+              <li><a href="{{path('dashboard')}}"><i class="icon-globe"></i> Accueil</a></li>
+              
+              <li><a href="{{path('login')}}"><i class="icon-off"></i> Déconnexion</a></li>
+            </ul>
+            </div>
+          </div>
+          <!--Button User END-->  
+          
+          </div>
+    </div>
+    <!--Header END-->
+
+    
+    <!--Sidebar Start--> 
+	<div id="sidebar">
+      <ul class="menu-sidebar">
+       <li><a href="{{path('dashboard')}}" ><i class="icon-home"></i> <span>Accueil</span></a></li>
+                <li><a href="{{path('utilisateurs')}}" ><i class="icon-group"></i> <span>Utilisateurs </span></a></li>
+      </ul>
+
+    
+    </div>
+    <!--Sidebar END-->
+    
+    <!--Content Start-->
+	<div id="content">
+    
+    	    
+	 <!--SpeedBar Start-->
+     <div class="speedbar">
+     <div class="speedbar-content">
+     
+     <ul class="menu-drop">
+     			<li><a href="#"><i class="icon-chevron-down"></i></a>
+               		<ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        
+                    </ul>  
+                </li>
+     </ul>
+     
+     <ul class="menu-speedbar">
+    	  <li><a href="messages.html">Mes Declarations</a></li>
+          <li><a href="search.html">Recherche</a></li>
+          
+          
+     </ul>
+
+     
+     </div>
+     </div>
+     <!--SpeedBar END-->
+     
+     <!--Search Start-->   
+     <div class="search">
+     <form class="search-form">
+     	<input type="text" name="" value="" placeholder="Enter keywords">
+     </form>
+	 <div class="clear"></div>	
+     </div>
+     <!--Search END-->
+     
+     <!--CONTENT MAIN START-->
+     <div class="content">
+        
+        <!--LEFTBAR PROFILE START-->
+        <div class="leftbar-profile">
+        <div class="p-avatar"><img src="{{Adherant.getPhotourl()}} " alt=""></div>
+        <ul class="p-menu">
+          
+          <div class="btn btn-warning"><a href="{{ path('bloquer', { 'id': Adherant.getId() }) }}"   onclick="$.jGrowl('Ladhérent a été bloquée', { header: 'FAIT !' });"> </i> Bloquer</a></div>
+         <div class="btn btn-success"> <a href="{{ path('debloquer', { 'id': Adherant.getId() }) }}"   onclick="$.jGrowl('Ladhérent a été debloquée', { header: 'FAIT !' });"> </i> Activer</a></div>
+        </ul>
+        
+        
+        
+        </div>
+        
+        
+        <!--LEFTBAR PROFILE END-->
+        
+        <!--CONTENT PROFILE START-->
+        <div class="content-profile">
+          <div class="summary-title">{{Adherant.getNom()}} {{Adherant.getPrenom()}}  <span>(Adhérent)</span></div>
+                  
+          <div class="pull-left">
+          <div class="items-info-profile">
+             <div class="info-profile">
+                 <div class="info-left-profile"><span>Age</span></div>
+                 <div class="info-right-profile">{{Adherant.getAge()}} </div>
+                 <div class="clear"></div>
+             </div>
+             <div class="info-profile">
+                 <div class="info-left-profile"><span>Ville:</span></div>
+                 <div class="info-right-profile">{{Adherant.getVille()}} </div>
+                 <div class="clear"></div>
+             </div>
+             
+          </div>
+          
+          <div class="summary-title items-info-profile pull-left">Informations de contact</div>
+          <div class="edit-link-profile"><a href="#">Edit</a></div>
+          <div class="clear"></div>
+          
+          <div class="items-info-profile">
+             <div class="info-profile">
+                 <div class="info-left-profile"><span>Adresse Email:</span></div>
+                 <div class="info-right-profile">{{Adherant.getEmail()}}  </div>
+                 <div class="clear"></div>
+             </div>
+             <div class="info-profile">
+                 <div class="info-left-profile"><span>Numéro de Téléphone:</span></div>
+                 <div class="info-right-profile">{{Adherant.getTelephone()}}  </div>
+                 <div class="clear"></div>
+             </div>
+             
+          </div>
+          
+          
+          
+          
+          
+        </div>  
+        </div>
+        <!--CONTENT PROFILE END-->
+        <div class="clear"></div>
+     </div>
+     <!--CONTENT MAIN END-->
+
+    </div>
+    <!--Content END-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{asset("js/jquery.min.js")}}"></script>
+    <script src="{{asset("js/jquery-ui.min.js")}}"></script>
+   
+    <script src="{{asset("js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
+    <script src="{{asset("js/bootstrap-colorpicker.js")}}"></script>
+    <script src="{{asset("js/google-code-prettify/prettify.js")}}"></script>
+   
+    <script src="{{asset("js/jquery.flot.min.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.pie.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.orderBars.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.resize.js")}}"></script>
+    <script src="{{asset("js/graphtable.js")}}"></script>
+    <script src="{{asset("js/fullcalendar.min.js")}}"></script>
+    <script src="{{asset("js/chosen.jquery.min.js")}}"></script>
+    <script src="{{asset("js/autoresize.jquery.min.js")}}"></script>
+    <script src="{{asset("js/jquery.tagsinput.min.js")}}"></script>
+    <script src="{{asset("js/jquery.autotab.js")}}"></script>
+    <script src="{{asset("js/elfinder/js/elfinder.min.js")}}" charset="utf-8"></script>
+	<script src="{{asset("js/tiny_mce/tiny_mce.js")}}"></script>
+    <script src="{{asset("js/validation/languages/jquery.validationEngine-en.js")}}" charset="utf-8"></script>
+	<script src="{{asset("js/validation/jquery.validationEngine.js")}}" charset="utf-8"></script>
+    <script src="{{asset("js/jquery.jgrowl_minimized.js")}}"></script>
+    <script src="{{asset("js/jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("js/jquery.mousewheel.js")}}"></script>
+    <script src="{{asset("js/jquery.jscrollpane.min.js")}}"></script>
+    <script src="{{asset("js/jquery.stepy.min.js")}}"></script>
+    <script src="{{asset("js/jquery.validate.min.js")}}"></script>
+    <script src="{{asset("js/raphael.2.1.0.min.js")}}"></script>
+    <script src="{{asset("js/justgage.1.0.1.min.js")}}"></script>
+	<script src="{{asset("js/glisse.js")}}"></script>
+    
+	<script src="{{asset("js/application.js")}}"></script>
+  </body>
+</html>
+

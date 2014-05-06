@@ -1,0 +1,69 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Prestataire:
+    type: entity
+    table: prestataire
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        prenom:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        domaine:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        jourDisp:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: jour_disp
+        prixServ:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 0
+            comment: ''
+            column: prix_serv
+        email:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        tel:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        mdp:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        adr:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

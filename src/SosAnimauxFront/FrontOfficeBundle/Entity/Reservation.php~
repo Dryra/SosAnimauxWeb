@@ -1,0 +1,69 @@
+<?php
+
+namespace SosAnimauxFront\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="id_pens", columns={"id_pens", "id_adh", "id_prest"}), @ORM\Index(name="id_adh", columns={"id_adh"}), @ORM\Index(name="id_prest", columns={"id_prest"}), @ORM\Index(name="IDX_42C84955BD350CE6", columns={"id_pens"})})
+ * @ORM\Entity
+ */
+class Reservation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateduree", type="string", length=150, nullable=false)
+     */
+    private $dateduree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=3, nullable=false)
+     */
+    private $etat;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Prestataire
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Prestataire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_prest", referencedColumnName="id")
+     * })
+     */
+    private $idPrest;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Pensions
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Pensions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pens", referencedColumnName="id")
+     * })
+     */
+    private $idPens;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Adherant
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Adherant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_adh", referencedColumnName="id")
+     * })
+     */
+    private $idAdh;
+
+
+}

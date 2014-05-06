@@ -1,0 +1,27 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Adresse:
+    type: entity
+    table: adresse
+    id:
+        ville:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        lat:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+        lon:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+    lifecycleCallbacks: {  }

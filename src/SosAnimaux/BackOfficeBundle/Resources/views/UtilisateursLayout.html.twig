@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Sweet Dreams - Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{asset("css/style.css")}}" rel="stylesheet">
+    <link href="{{asset("css/bootstrap.css")}}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{asset("css/jquery-ui-1.8.16.custom.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/fullcalendar.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/chosen.css")}}" media="screen"  />
+    <link rel="stylesheet" href="{{asset("css/datepicker.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/colorpicker.css")}}">
+    <link rel="stylesheet" href="{{asset("css/glisse.css?1.css")}}">
+    <link rel="stylesheet" href="{{asset("css/jquery.jgrowl.css")}}">
+        <link rel="stylesheet" href="{{asset("js/elfinder/css/elfinder.css")}}" media="screen">
+
+    
+    <link rel="stylesheet" href="{{asset("css/jquery.tagsinput.css")}}" />
+    <link rel="stylesheet" href="{{asset("css/demo_table.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/jquery.jscrollpane.css")}}" >
+    <link rel="stylesheet" href="{{asset("css/validationEngine.jquery.css")}}">
+    <link rel="stylesheet" href="{{asset("css/jquery.stepy.css")}}" />
+    
+	<link rel="stylesheet" href="{{asset("css/icon/font-awesome.css")}}">
+    <link rel="stylesheet" href="{{asset("css/bootstrap-responsive.css")}}">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/excanvas.min.js"></script><![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{asset("/images/icons/favicon.ico")}}">
+  </head>
+
+  <body onload="initialize()">
+
+	<!--Header Start-->
+	<div class="header" >
+    		
+           <a href="dashboard.html" class="logo"><h1>Le Nom De l'adherant</h1></a>
+           
+           <div class="pull-right">
+           
+           
+            
+           <!--Button User Start-->  
+		   <div class="btn-group pull-right" >
+            <a class="btn btn-profile dropdown-toggle" id="button-profile" data-toggle="dropdown" href="#">
+              <span class="name-user"><strong>Bienvenue</strong>, Nom de l'adherent</span> 
+              <span class="avatar"><img src="images/users/1.jpg" alt="" ></span> 
+              <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu" id="prof_dropdown">
+            <div class="item_m"><span class="caret"></span></div>
+            <ul class="clear_ul" >
+              <li><a href="{{path('dashboard')}}"><i class="icon-globe"></i> Accueil</a></li>
+              
+              <li><a href="{{path('login')}}"><i class="icon-off"></i> Déconnexion</a></li>
+            </ul>
+            </div>
+          </div>
+          <!--Button User END-->  
+          
+          </div>
+    </div>
+    <!--Header END-->
+
+    
+    <!--Sidebar Start--> 
+	<div id="sidebar">
+      <ul class="menu-sidebar">
+       <li><a href="{{path('dashboard')}}" ><i class="icon-home"></i> <span>Accueil</span></a></li>
+                <li><a href="{{path('utilisateurs')}}" class="active"><i class="icon-group"></i> <span>Utilisateurs </span></a></li>
+      </ul>
+
+    
+    </div>
+    <!--Sidebar END-->
+    
+    <!--Content Start-->
+	<div id="content">
+    
+    	    
+	 <!--SpeedBar Start-->
+     <div class="speedbar">
+     <div class="speedbar-content">
+     
+     <ul class="menu-drop">
+     			<li><a href="#"><i class="icon-chevron-down"></i></a>
+               		<ul>
+                        <li><a href="{{path('dashboard')}}">Accueil</a></li>
+                        
+                    </ul>  
+                </li>
+     </ul>
+     
+     <ul class="menu-speedbar">
+    	  
+          
+          
+     </ul>
+
+     
+     </div>
+     </div>
+     <!--SpeedBar END-->
+     
+     <!--Search Start-->   
+     <div class="search">
+     
+	 <div class="clear"></div>	
+     </div>
+     <!--Search END-->
+     
+     <!--CONTENT MAIN START-->
+     <div class="content">
+        
+        <!--LEFTBAR PROFILE START-->
+       
+        
+        
+        <!--LEFTBAR PROFILE END-->
+        
+        <!--CONTENT PROFILE START-->
+        <!--CONTENT MAIN START-->
+     <div class="content">
+         <br>
+        <p ><b><font size="5px" color="blue" > Liste des Adhérents</font></b></p>
+        <!--Messages Start-->
+          <div class="tab-pane" id="inbox">
+					<div class="message-list">
+                    <div class="action-message">
+                     <div class="btn-group">
+                      <button class="btn b2"><i class="icon-share-alt padding-null"></i></button>
+                      <button class="btn b2"><i class="icon-trash padding-null"></i></button>
+                      <button class="btn b2"><i class="icon-pencil padding-null"></i></button>
+             		 </div>
+                    </div>
+                    <table class="table table-striped table-mod" id="datatable_3">
+                    <thead>
+                      <tr>
+                        <th class="chex-table"><input type="checkbox" id="maincheck" name="cc"/><label for="maincheck"><span></span></label></th>
+                        <th class="min-width"><i class="icon-star"></i></th>
+                        <th>Nom</th>
+                                                        <th>EMail</th> 
+                                                        <th>Ville</th>  
+                                                        <th>Etat du Compte</th>
+                                                        <th>Téléphone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% set var = 1 %}
+                        {% for adh in Adherant %}
+                            
+                      <tr>
+                        <td class="chex-table"><input type="checkbox" name="numbers[]" class="mc" value="0" id="{{ var }}" /><label for="{{ var }}"><span></span></label></td>
+                        <td class="min-width"><a href="#"><i class="icon-star"></i></a></td>
+                        <td>{{adh.getNom()}} {{adh.getPrenom()}}</td>
+                                                            <td>{{adh.getEmail()}}</td>
+                                                            <td>{{adh.getVille()}}</td>
+                                                            <td> {% if adh.getEtat()=="1" %} <img src="{{asset("images/green.png")}}" width="10px" height="10px" alt="Actif" > {%else%}  <img src="{{asset("images/blocked.png")}}" width="10px" height="10px" alt="Bloqué" > {%endif%} </td>
+                                                            <td>{{adh.getTelephone()}} <div class="view-button"><a href="{{ path('profil', { 'id': adh.getId() }) }}" class="btn  btn-mini">Afficher</a></div>{% if adh.getEtat()=="1" %}<div class="view-button"><a href="{{ path('bloquer', { 'id': adh.getId() }) }}" class="btn  btn-mini"onclick="$.jGrowl('Ladhérent a été bloquée', { header: 'FAIT !' });" >Bloquer</a></div>
+                                                           {%else%} <div class="view-button"><a href="{{ path('debloquer', { 'id': adh.getId() }) }}" class="btn  btn-mini"onclick="$.jGrowl('Ladhérent a été Activé', { header: 'FAIT !' });" >Activer</a></div>{%endif%}
+                                                            
+                                                            </td>
+                                                       
+                      </tr>
+                      {% set var = var+1 %}
+                       {%endfor%}
+                    </tbody>
+                    </table>
+                    </div>
+                </div> 
+        
+        <br>
+        <br>
+        <br>
+        <p ><b><font size="5px" color="blue" > Liste des Prestataires</font></b></p>
+        <!--Messages Start-->
+          <div class="tab-pane" id="inbox2">
+					<div class="message-list">
+                    <div class="action-message">
+                     <div class="btn-group">
+                      <button class="btn b2"><i class="icon-share-alt padding-null"></i></button>
+                      <button class="btn b2"><i class="icon-trash padding-null"></i></button>
+                      <button class="btn b2"><i class="icon-pencil padding-null"></i></button>
+             		 </div>
+                    </div>
+                    <table class="table table-striped table-mod" id="datatable_4">
+                    <thead>
+                      <tr>
+                        <th class="chex-table"><input type="checkbox" id="maincheck2" name="cc2"/><label for="maincheck2"><span></span></label></th>
+                        <th class="min-width"><i class="icon-star"></i></th>
+                        <th>Nom Complet</th>
+                                                <th>Domaine</th>
+                                                <th>Journée</th>
+                                                <th>Email</th>
+                                                <th>Téléphone</th>
+                                                <th>Adresse</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% set varp = 1 %}
+                        {% for pres in Prestataire %}
+                            
+                      <tr>
+                        <td class="chex-table"><input type="checkbox" name="numbers2[]" class="mc" value="0" id="{{ varp }}" /><label for="{{ varp }}"><span></span></label></td>
+                        <td class="min-width"><a href="#"><i class="icon-star"></i></a></td>
+                        <td>{{pres.getNom()}} {{pres.getPrenom()}}</td>
+                                                    <td>{{pres.getDomaine()}}</td>
+                                                    <td>{{pres.getJourDisp()}}</td>
+                                                    <td>{{pres.getEmail()}}</td>
+                                                    <td>{{pres.getTel()}}</td>
+                                                    <td>{{pres.getAdr()}} <div class="view-button"><a href="#" class="btn  btn-mini">Afficher</a></div></td>
+                                                
+                      </tr>
+                      {% set varp = varp+1 %}
+                       {%endfor%}
+                    </tbody>
+                    </table>
+                    </div>
+                </div>
+  
+     </div>
+     <!--CONTENT MAIN END-->
+
+        <!--CONTENT PROFILE END-->
+        <div class="clear"></div>
+     </div>
+     <!--CONTENT MAIN END-->
+
+    </div>
+    <!--Content END-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{asset("js/jquery.min.js")}}"></script>
+    <script src="{{asset("js/jquery-ui.min.js")}}"></script>
+   
+    <script src="{{asset("js/bootstrap.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
+    <script src="{{asset("js/bootstrap-colorpicker.js")}}"></script>
+    <script src="{{asset("js/google-code-prettify/prettify.js")}}"></script>
+   
+    <script src="{{asset("js/jquery.flot.min.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.pie.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.orderBars.js")}}"></script>
+    <script src="{{asset("js/jquery.flot.resize.js")}}"></script>
+    <script src="{{asset("js/graphtable.js")}}"></script>
+    <script src="{{asset("js/fullcalendar.min.js")}}"></script>
+    <script src="{{asset("js/chosen.jquery.min.js")}}"></script>
+    <script src="{{asset("js/autoresize.jquery.min.js")}}"></script>
+    <script src="{{asset("js/jquery.tagsinput.min.js")}}"></script>
+    <script src="{{asset("js/jquery.autotab.js")}}"></script>
+    <script src="{{asset("js/elfinder/js/elfinder.min.js")}}" charset="utf-8"></script>
+	<script src="{{asset("js/tiny_mce/tiny_mce.js")}}"></script>
+    <script src="{{asset("js/validation/languages/jquery.validationEngine-en.js")}}" charset="utf-8"></script>
+	<script src="{{asset("js/validation/jquery.validationEngine.js")}}" charset="utf-8"></script>
+    <script src="{{asset("js/jquery.jgrowl_minimized.js")}}"></script>
+    <script src="{{asset("js/jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("js/jquery.mousewheel.js")}}"></script>
+    <script src="{{asset("js/jquery.jscrollpane.min.js")}}"></script>
+    <script src="{{asset("js/jquery.stepy.min.js")}}"></script>
+    <script src="{{asset("js/jquery.validate.min.js")}}"></script>
+    <script src="{{asset("js/raphael.2.1.0.min.js")}}"></script>
+    <script src="{{asset("js/justgage.1.0.1.min.js")}}"></script>
+	<script src="{{asset("js/glisse.js")}}"></script>
+    
+	<script src="{{asset("js/application.js")}}"></script>
+  </body>
+</html>
+
+

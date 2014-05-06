@@ -1,0 +1,30 @@
+   <div class="well">
+    <form method="post" {{ form_enctype(form) }}>
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        <div>
+            {# Génération du label. #}
+            {{ form_label(form.objet, "Objet du message") }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.objet) }}
+            {# Génération de l'input. #}
+            {{ form_widget(form.objet) }}
+        </div>
+
+        <div>
+            {{ form_label(form.contenu, "Contenu du message") }}
+            {{ form_errors(form.contenu) }}
+            {{ form_widget(form.contenu) }}
+        </div>
+
+        <div>
+            {{ form_label(form.idDestinataire, "Destinataire") }}
+            {{ form_errors(form.idDestinataire) }}
+            {{ form_widget(form.idDestinataire) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+    </form>
+</div>

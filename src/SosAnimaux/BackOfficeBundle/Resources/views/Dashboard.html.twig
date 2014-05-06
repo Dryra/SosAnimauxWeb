@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <title>Sweet Dreams - Dashboard</title>
+
+        <!-- http://www.scriptgates.com - more free script -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        
+        
+        
+        
+        
+        
+        
+         <!-- Le styles -->
+        <link href="{{asset("css/style.css")}}" rel="stylesheet">
+        <link href="{{asset("css/bootstrap.css")}}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{asset("css/jquery-ui-1.8.16.custom.css")}}" media="screen"  />
+        <link rel="stylesheet" href="{{asset("css/fullcalendar.css")}}" media="screen"  />
+        <link rel="stylesheet" href="{{asset("css/chosen.css")}}" media="screen"  />
+        <link rel="stylesheet" href="{{asset("css/datepicker.css")}}" >
+        <link rel="stylesheet" href="{{asset("css/colorpicker.css")}}">
+        <link rel="stylesheet" href="{{asset("css/glisse.css?1.css")}}">
+        <link rel="stylesheet" href="{{asset("css/jquery.jgrowl.css")}}">
+        <link rel="stylesheet" href="{{asset("js/elfinder/css/elfinder.css")}}" media="screen">
+
+
+        <link rel="stylesheet" href="{{asset("css/jquery.tagsinput.css")}}" />
+        <link rel="stylesheet" href="{{asset("css/demo_table.css")}}" >
+        <link rel="stylesheet" href="{{asset("css/jquery.jscrollpane.css")}}" >
+        <link rel="stylesheet" href="{{asset("css/validationEngine.jquery.css")}}">
+        <link rel="stylesheet" href="{{asset("css/jquery.stepy.css")}}" />
+
+        <link rel="stylesheet" href="{{asset("css/icon/font-awesome.css")}}">
+        <link rel="stylesheet" href="{{asset("css/bootstrap-responsive.css")}}">
+
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lte IE 8]><script type="text/javascript" src="/js/excanvas.min.js"></script><![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{{asset("/images/icons/favicon.ico")}}">
+
+
+                
+        
+        
+        
+        
+        
+        
+    </head>
+
+    <body>
+        
+      
+
+        <!-- http://themeforest.net/user/dimka_ua_kh/portfolio -->
+        <!--Header Start-->
+        <div class="header" >
+
+            <a href="dashboard.html" class="logo"><h1>SWEET DREAMS</h1></a>
+
+            <div class="pull-right">
+
+                <!--Notifications Start-->  
+                <div class="notifications-head">
+
+                    <!--Messages Start-->
+
+                    <!--Messages END--> 
+
+                    <!--Recent Activity Start-->
+
+                    <!--Recent Activity END--> 
+
+                </div><!--Notifications END-->
+
+                <!--Button User Start-->  
+                <div class="btn-group pull-right" >
+                    <a class="btn btn-profile dropdown-toggle" id="button-profile" data-toggle="dropdown" href="#">
+                        <span class="name-user"><strong>Welcome</strong>, Alan Cook</span> 
+                        <span class="avatar"><img src="{{asset("images/users/1.jpg")}}" alt="" ></span> 
+                        <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" id="prof_dropdown">
+                        <div class="item_m"><span class="caret"></span></div>
+                        <ul class="clear_ul" >
+                            <li><a href="#"><i class="icon-globe"></i> Home</a></li>
+                            <li><a href="#"><i class="icon-comments"></i> Messages</a></li>
+                            <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
+                            <li><a href="index.html"><i class="icon-off"></i> Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Button User END-->  
+
+            </div>
+        </div>
+        <!--Header END-->
+
+
+        <!--Sidebar Start--> 
+        <div id="sidebar">
+            <ul class="menu-sidebar">
+                <li><a href="{{path('dashboard')}}" class="active"><i class="icon-home"></i> <span>General</span></a></li>
+                <li><a href="{{path('utilisateurs')}}"><i class="icon-group"></i> <span>Utilisateurs </span></a></li>
+                
+            </ul>
+
+
+        </div>
+        <!--Sidebar END-->
+
+        <!--Content Start-->
+        <div id="content">
+
+
+            <!--SpeedBar Start-->
+            <div class="speedbar">
+                <div class="speedbar-content">
+
+
+
+                    <ul class="menu-speedbar">
+
+                        <li><button data-target="#header-modal" data-toggle="modal" class="btn btn-warning">Bloquer un Adhérant</button></li>
+                        <li><button data-target="#header-modal2" data-toggle="modal" class="btn btn-success">Ajouter un Adhérant</button></li>
+<li><a href="{{path('utilisateurs')}}"><i class="btn btn-success">Utilisateurs</i> </a></li>
+                    </ul>
+
+                    <div id="header-modal" class="modal hide">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal">&times;</button>
+                            Liste des Adhérents
+                        </div>
+                        <div class="modal-body">
+                            <!--Recent Users Start-->
+                            <div class="grid span6">
+                                <form class="search-form">
+                        <input type="text"  name="" value="" placeholder="Enter keywords">
+                    </form>
+                                <div class="grid-title">
+                                    <div class="pull-left">Liste Adhérents</div>
+
+                                    <div class="pull-right"><div class="grid-title-load">
+
+                                            </div>
+                                        </div>
+                                    <div class="clear"></div>   
+                                </div>
+
+                                <div class="users">
+
+                                    <div class="user c_bg-2">
+                 {% for ad in Adherant %}
+                                            <div class="user-avatar"><img src="{{ad.getPhotourl()}}" alt=""></div>
+                                            <div class="user-info">
+                                                <div class="user-name">{{ad.getNom()}} {{ad.getPrenom()}} <span class="label label-success">Actif</span> </div>
+                                                <div class="user-email"><a href="#">{{ad.getEmail()}}</a></div>
+                                                <div class="user-date">{{ad.getVille()}}</div>
+                                            </div>
+                                            <ul class="user-actions">
+                                                <li><a href="#"><i class="icon-remove"></i></a></li>
+
+                                            </ul>
+                                            <div class="clear"></div>
+               {%endfor%}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!--Recent Users END-->
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                            </div>
+                        </div>
+
+                        <!--Ajout Adhérent-->
+
+                        <div id="header-modal2" class="modal hide">
+                            <div class="modal-header">
+                                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                                Ajouter un Adhérant
+                            </div>
+                            <div class="modal-body">
+
+
+
+                                <form  action="{{path('dashboard')}}" id="formID" class="formular" method="post" {{ form_enctype(form) }}  >
+
+                                    <div class="formRow">
+                                        <label>Nom : </label>
+                                        <div class="formRight">
+                                            {{ form_widget(form.nom) }}
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="formRow">
+                                        <label>Prénom : </label>
+                                        <div class="formRight">
+                                           {{ form_widget(form.prenom) }}
+                                             
+                                        </div>
+                                    </div>
+
+                                    <div class="formRow">
+                                        <label>Email: </label>
+                                        <div class="formRight">
+                                           {{ form_widget(form.email) }}
+                                            
+                                        </div>
+                                    </div>
+
+
+                                    <div class="formRow">
+                                        <label>Mot de passe: </label>
+                                        <div class="formRight">
+                                           {{ form_widget(form.mdp) }}
+                                            
+                                        </div>
+                                    </div>
+                                    
+
+
+
+
+
+
+
+
+                                    <!--Country-->  
+                                    <div class="formRow">
+                                        <label>Ville :</label>
+                                        <div class="formRight">
+                                            <select class="chzn-select chosen_select"  >
+                                                <option value=""></option> 
+                                                <option value="Tunis">Tunis</option> 
+                                                <option value="Sfax">Sfax</option> 
+                                                <option value="Kelibia">Kelibian</option> 
+                                                <option value="Gafsa">Gafsa</option> 
+                                                <option value="Gabes">Gabes</option> 
+                                                <option value="Sidi Bouzid">Sidi Bouzid</option> 
+
+
+                                            </select>  
+                                        </div>
+                                    </div>
+
+                                    <!-- Fin Country-->  
+                                    <br>
+                                    <br>
+                                    <br>
+                                    {{ form_rest(form) }}
+<input type="submit" class="btn btn-large btn-primary" value="Valider & Envoyer !">
+
+                                </form>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                            </div>
+                        </div>
+
+
+                        <!--Fin Ajout Adhérent-->
+
+
+
+
+
+                    </div>
+                </div>
+                <!--SpeedBar END-->
+
+                <!--Search Start-->   
+                <div class="search">
+                    
+                    <div class="clear"></div>	
+                </div>
+                <!--Search END-->
+
+                <!--CONTENT MAIN START-->
+                <div class="content">
+
+                    <!--ButtonsBar Start -->
+                    <div class="buttons-bar">
+                        <div class="clear"></div>	
+                        <div class="pull-left">
+                            <a href="#Animaux" class="btn">Animaux</a><span class="inf_link">3</span>
+                            <a href="#adher" class="btn">Adhérents</a>
+                            <a href="#Prestataires" class="btn">Prestataires</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" class="btn"><i class="icon-cog"></i> Options</a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--ButtonsBar END -->
+                    <script>
+
+                        var d = new Date();
+
+                        document.getElementById('los').innerHTML = d;
+                        </script>
+                        <!--Statistics Box Start-->
+                        <div class="grid">
+                            <div class="grid-title">
+                                <div class="pull-left">Statistiques</div>
+                                <div class="pull-right">
+                                    <div class="stat-input-date">
+                                        <input type="text" name="regular" id="los" class="input-date-min" value="">
+                                        <div class="fieldIcon"><i class="icon-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>   
+                            </div>
+
+                            <!-- Information data -->
+                            <div class="information-data">
+                                <div class="data">
+                                    <p class="date-figures">{{nbadherants}}</p>
+                                    <p class="date-title" >Adhérents</p>
+                                </div>
+                                <div class="data">
+                                    <p class="date-figures">{{nbprestataires}}</p>
+                                    <p class="date-title">Prestataires</p>
+                                </div>
+                                <div class="data">
+                                    <p class="date-figures">{{nbanimaux}}</p>
+                                    <p class="date-title">Animals</p>
+                                </div>
+                                <div class="data data-last">
+                                    <p class="date-figures">95%</p>
+                                    <p class="date-title">Updates</p>
+                                </div>
+                                <div class="data">
+                                    <p class="date-figures">165</p>
+                                    <p class="date-title">Views</p>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <!-- Information data end -->
+                            <div class="grid-content overflow">
+                                <table class="chart2">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Views</th>
+                                            <th>Money ($)</th>
+                                            <th>Sales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>1</th>
+                                            <td>250</td>
+                                            <td>580</td>
+                                            <td>686</td>
+                                        </tr>
+                                        <tr>
+                                            <th>2</th>
+                                            <td>280</td>
+                                            <td>450</td>
+                                            <td>546</td>
+                                        </tr>
+                                        <tr>
+                                            <th>3</th>
+                                            <td>400</td>
+                                            <td>500</td>
+                                            <td>600</td>
+                                        </tr>
+                                        <tr>
+                                            <th>4</th>
+                                            <td>350</td>
+                                            <td>600</td>
+                                            <td>703</td>
+                                        </tr>
+                                        <tr>
+                                            <th>5</th>
+                                            <td>410</td>
+                                            <td>560</td>
+                                            <td>800</td>
+                                        </tr>
+                                        <tr>
+                                            <th>6</th>
+                                            <td>210</td>
+                                            <td>620</td>
+                                            <td>750</td>
+                                        </tr>
+                                        <tr>
+                                            <th>7</th>
+                                            <td>265</td>
+                                            <td>500</td>
+                                            <td>820</td>
+                                        </tr>
+                                        <tr>
+                                            <th>8</th>
+                                            <td>310</td>
+                                            <td>650</td>
+                                            <td>801</td>
+                                        </tr>
+                                        <tr>
+                                            <th>9</th>
+                                            <td>450</td>
+                                            <td>660</td>
+                                            <td>756</td>
+                                        </tr>
+                                        <tr>
+                                            <th>10</th>
+                                            <td>433</td>
+                                            <td>600</td>
+                                            <td>900</td>
+                                        </tr>
+                                        <tr>
+                                            <th>11</th>
+                                            <td>400</td>
+                                            <td>650</td>
+                                            <td>800</td>
+                                        </tr>
+                                        <tr>
+                                            <th>12</th>
+                                            <td>360</td>
+                                            <td>800</td>
+                                            <td>930</td>
+                                        </tr>
+                                        <tr>
+                                            <th>13</th>
+                                            <td>410</td>
+                                            <td>750</td>
+                                            <td>800</td>
+                                        </tr>
+                                        <tr>
+                                            <th>14</th>
+                                            <td>440</td>
+                                            <td>650</td>
+                                            <td>860</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="filter-statistics">
+                                    <div class="pull-left">
+                                        <div class="filter"><input type="text" name="" value="14"> <span>Show</span></div>
+                                        <div class="filter"><input type="text" name="" value="200" class="input_size_2"> <span>Step</span></div>
+                                    </div>
+
+                                    <div class="pull-right"><a href="#" class="btn">View All</a></div>
+                                    <div class="clear"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Statistics Box END-->
+
+                        <!--Chat Start-->
+                        <div class="grid">
+
+
+                            <div id="gallery-controls">
+                                <a href="#" id="gallery-prev"></a><a href="#" id="gallery-next"></a>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="reserved-space-users"></div>
+
+                            <div id="chat-messages">
+
+                                <div class="chat-message c_bg-2">
+                                    <div class="c_avatar"><img src="{{asset("images/users/1.jpg")}}" alt=""></div>
+                                    <div class="c_actions">
+                                        <div class="btn-group chat-menu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>+</span></a>
+                                            <div class="dropdown-menu">
+                                                <div class="chat-menu-links"><a href="#">Del</a> <a href="#">Reply</a> <a href="#">Spam</a></div>
+                                                <div class="triangle-3"></div>
+                                            </div>
+                                        </div>        
+                                    </div>
+                                    <div class="c_mes">
+                                        <div class="c_author">Alan Cook <span>- Today at 11:48</span></div>
+                                        <div class="c_text">This is Photoshop's version  of Lorem Ipsum.</div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="chat-message">
+                                    <div class="c_avatar"><img src="images/users/11.jpg" alt=""></div>
+                                    <div class="c_actions">
+                                        <div class="btn-group chat-menu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>+</span></a>
+                                            <div class="dropdown-menu">
+                                                <div class="chat-menu-links"><a href="#">Del</a> <a href="#">Reply</a> <a href="#">Spam</a></div>
+                                                <div class="triangle-3"></div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="c_mes">
+                                        <div class="c_author">Maria Clark <span>- Today at 11:48</span></div>
+                                        <div class="c_text">This is Photoshop's version  of Lorem Ipsum.</div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <form class="c_form">
+                                    <div class="form-textarea"><textarea name="" class="span"></textarea></div>
+                                    <input type="submit" class="btn" value="Send">
+                                    <div class="clear"></div>
+                                </form>
+
+                            </div>
+
+
+                        </div>
+                        <!--Chat END-->
+
+                        <div class="row-fluid">
+                            <!--Tabs Start-->
+                            
+                            <!--Tabs END-->
+
+                            <!--Pie Chart-->
+                            <div class="span5 grid-transparent">
+                                <div class="summary-title">Indicator CPU</div>
+                                
+                                <div class="pie-chart"><div id="g1"></div></div>
+                                <script>
+                                    var g1;
+                                    window.onload = function() {
+                                        var g1 = new JustGage({
+                                            id: "g1",
+                                            value: {{nbadherants}},
+                                            min: 0,
+                                            max: 100,
+                                            title: " ",
+                                            label: "Adhérents"
+                                        });
+                                        setInterval(function() {
+                                            g1.refresh({{nbadherants}});
+                                        }, 2500);
+                                    };
+                                    </script>
+                                </div>
+                                <!--Pie END-->
+                                
+                                <!--Pie Chart-->
+                            <div class="span5 grid-transparent">
+                                <div class="summary-title">Indicator CPU</div>
+                                
+                                <div class="pie-chart"><div id="g2"></div></div>
+                                <script>
+                                    var g2;
+                                    window.onload = function() {
+                                        var g2 = new JustGage2({
+                                            id: "g2",
+                                            value: {{nbadherants}},
+                                            min: 0,
+                                            max: 100,
+                                            title: " ",
+                                            label: "Prestataires"
+                                        });
+                                        setInterval(function() {
+                                            g2.refresh({{nbadherants}});
+                                        }, 2500);
+                                    };
+                                    </script>
+                                </div>
+                                <!--Pie END-->
+                                
+                                
+                            </div>
+
+
+                            <div class="row-fluid">
+                                <!--Table 1 Start-->
+                                <div class="grid span6">
+                                    <div class="grid-title">
+                                        <div class="pull-left" id="Prestataires">Prestataires</div>
+                                        <div class="pull-right">
+                                            <input type="text" name="regular" class="min-input" value="{{nbprestataires}}">
+                                        </div>
+                                        <div class="clear"></div>   
+                                    </div>
+<form class="search-form">
+                        <input type="text" id="search2" name="" value="" placeholder="Enter keywords">
+                    </form>
+                                    <table id="table2" class="table table-striped table-mod">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom Complet</th>
+                                                <th>Domaine</th>
+                                                <th>Journée</th>
+                                                <th>Email</th>
+                                                <th>Téléphone</th>
+                                                <th>Adresse</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                {% for pres in Prestataire %}
+                                                <tr>
+                                                    <td>{{pres.getNom()}} {{pres.getPrenom()}}</td>
+                                                    <td>{{pres.getDomaine()}}</td>
+                                                    <td>{{pres.getJourDisp()}}</td>
+                                                    <td>{{pres.getEmail()}}</td>
+                                                    <td>{{pres.getTel()}}</td>
+                                                    <td>{{pres.getAdr()}} <div class="view-button"><a href="#" class="btn  btn-mini">Afficher</a></div></td>
+                                                </tr>
+              {%endfor%}
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <!--Table 1 END-->
+
+
+
+                                    <!--Table 2 END-->
+                                </div>
+
+
+                                <div class="row-fluid">
+                                    <!--Table 2 Start-->
+                                    <div class="grid span6">
+                                        <div class="grid-title">
+                                            <div class="pull-left" id="Animaux">Animaux</div>
+                                            <div class="pull-right">
+                                                <input type="text" name="regular" class="min-input" value="{{nbanimaux}}">
+                                            </div>
+                                            <div class="clear"></div>   
+                                        </div>
+<form class="search-form">
+                        <input type="text" id="search1" name="" value="" placeholder="Enter keywords">
+                    </form>
+                                        <table id="table1" class="table table-striped table-mod">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <th>Race</th> 
+                                                    <th>Espèce</th>       
+                                                    <th>Age</th>
+                                                    <th>Poids</th>
+                                                    <th>Couleur</th>
+                                                    <th>Vaccin</th>
+                                                    <th>Etat</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                {% for ani in Animal %}
+                                                    <tr>
+                                                        <td>{{ani.getNom()}} </td>
+                                                        <td>{{ani.getRace()}}</td>
+                                                        <td>{{ani.getEspece()}}</td>
+                                                        <td>{{ani.getAge()}}</td>
+                                                        <td>{{ani.getPoids()}}</td>
+                                                        <td>{{ani.getCouleur()}}</td>
+                                                        <td>{{ani.getVaccin()}}</td>
+                                                        <td>{{ani.getEtat()}}</td>
+
+                                                    </tr>
+              {%endfor%}
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <!--Table 2 END-->
+                                        <!--Table 2 Start-->
+                                        <div class="grid span6" id="adher">
+                                            <div class="grid-title">
+                                                <div class="pull-left">Adhérents</div>
+                                                <div class="pull-right">
+                                                    <input type="text" name="regular" class="min-input" value="{{nbadherants}}">
+                                                </div>
+                                                <div class="clear"></div>   
+                                            </div>
+<form class="search-form">
+                        <input type="text" id="search" name="" value="" placeholder="Enter keywords">
+                    </form>
+                                            <table id="table" class="table table-striped table-mod">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>EMail</th> 
+                                                        <th>Ville</th>  
+                                                        <th>Etat de Compte</th>
+                                                        <th>Téléphone</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                {% for adh in Adherant %}
+                                                        <tr>
+                                                            <td>{{adh.getNom()}} {{adh.getPrenom()}}</td>
+                                                            <td>{{adh.getEmail()}}</td>
+                                                            <td>{{adh.getVille()}}</td>
+                                                            <td> {% if adh.getEtat()=="1" %} Activé {%else%} Bloqué {%endif%} </td>
+                                                            <td>{{adh.getTelephone()}} <div class="view-button"><a href="{{ path('profil', { 'id': adh.getId() }) }}" class="btn  btn-mini">Afficher</a></div><div class="view-button"><a href="" class="btn  btn-mini"onclick="$.jGrowl('Ladhérent a été bloquée', { header: 'FAIT !' });" >Bloquer</a></div></td>
+                                                        </tr>
+              {%endfor%}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+
+                                        </div>
+                                        <!--CONTENT MAIN END-->
+
+                                    </div>
+                                    <!--Content END-->
+
+                                    <!-- Le javascript
+                                    ================================================== -->
+                                    <!-- Placed at the end of the document so the pages load faster -->
+                     <script src="{{asset("js/jquery.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery-ui.min.js")}}"></script>
+
+                                    <script src="{{asset("js/bootstrap.min.js")}}"></script>
+                                    <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>
+                                    <script src="{{asset("js/bootstrap-colorpicker.js")}}"></script>
+                                    <script src="{{asset("js/google-code-prettify/prettify.js")}}"></script>
+
+                                    <script src="{{asset("js/jquery.flot.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.flot.pie.js")}}"></script>
+                                    <script src="{{asset("js/jquery.flot.orderBars.js")}}"></script>
+                                    <script src="{{asset("js/jquery.flot.resize.js")}}"></script>
+                                    <script src="{{asset("js/graphtable.js")}}"></script>
+                                    <script src="{{asset("js/fullcalendar.min.js")}}"></script>
+                                    <script src="{{asset("js/chosen.jquery.min.js")}}"></script>
+                                    <script src="{{asset("js/autoresize.jquery.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.tagsinput.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.autotab.js")}}"></script>
+                                    <script src="{{asset("js/elfinder/js/elfinder.min.js")}}" charset="utf-8"></script>
+                                    <script src="{{asset("js/tiny_mce/tiny_mce.js")}}"></script>
+                                    <script src="{{asset("js/validation/languages/jquery.validationEngine-en.js")}}" charset="utf-8"></script>
+                                    <script src="{{asset("js/validation/jquery.validationEngine.js")}}" charset="utf-8"></script>
+                                    <script src="{{asset("js/jquery.jgrowl_minimized.js")}}"></script>
+                                    <script src="{{asset("js/jquery.dataTables.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.mousewheel.js")}}"></script>
+                                    <script src="{{asset("js/jquery.jscrollpane.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.stepy.min.js")}}"></script>
+                                    <script src="{{asset("js/jquery.validate.min.js")}}"></script>
+                                    <script src="{{asset("js/raphael.2.1.0.min.js")}}"></script>
+                                    <script src="{{asset("js/justgage.1.0.1.min.js")}}"></script>
+                                     <script src="{{asset("js/justgage.1.0.2.min.js")}}"></script>
+                                    <script src="{{asset("js/glisse.js")}}"></script>
+
+                                    <script src="{{asset("js/application.js")}}"></script>
+
+                                    <script>
+                                        var $rows = $('#table tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});
+
+                                        </script>
+   
+                                        
+                                                                             <script>
+                                        var $rows2 = $('#table1 tr');
+$('#search1').keyup(function() {
+    var val2 = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows2.show().filter(function() {
+        var text2 = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text2.indexOf(val2);
+    }).hide();
+});
+                                        </script>
+                                        
+                                        <script>
+                                        var $rows3 = $('#table2 tr');
+$('#search2').keyup(function() {
+    var val3 = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows3.show().filter(function() {
+        var text3 = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text3.indexOf(val3);
+    }).hide();
+});
+                                        </script>
+                                    
+                                    
+                                    
+                                    
+                            </body>
+                        </html>
+
+

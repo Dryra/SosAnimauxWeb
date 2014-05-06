@@ -1,0 +1,122 @@
+<?php
+
+namespace SosAnimauxFront\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Animal
+ *
+ * @ORM\Table(name="animal", indexes={@ORM\Index(name="id_adh", columns={"id_adh"}), @ORM\Index(name="adr", columns={"adr"})})
+ * @ORM\Entity
+ */
+class Animal
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="espece", type="string", length=20, nullable=false)
+     */
+    private $espece;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="string", length=20, nullable=false)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="race", type="string", length=20, nullable=false)
+     */
+    private $race;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poids", type="string", length=20, nullable=false)
+     */
+    private $poids;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=20, nullable=false)
+     */
+    private $couleur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vaccin", type="string", length=20, nullable=false)
+     */
+    private $vaccin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=20, nullable=false)
+     */
+    private $etat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autre", type="string", length=600, nullable=false)
+     */
+    private $autre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="blob", nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=20, nullable=false)
+     */
+    private $sexe;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Adherant
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Adherant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_adh", referencedColumnName="id")
+     * })
+     */
+    private $idAdh;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Adresse
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Adresse")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adr", referencedColumnName="ville")
+     * })
+     */
+    private $adr;
+
+
+}

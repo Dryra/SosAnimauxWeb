@@ -1,0 +1,37 @@
+login:
+    pattern:  /adminlogin
+    defaults: { _controller: BackOfficeBundle:Default:index }
+dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: BackOfficeBundle:Default:Dashboard }
+    
+profil:
+    pattern:  /profil/{id}
+    defaults: { _controller: BackOfficeBundle:Default:profil }
+    
+adherant_show:
+    pattern:  /show/{id}
+    defaults: { _controller: BackOfficeBundle:Adherant:show } 
+    
+new:
+    pattern:  /new
+    defaults: { _controller: BackOfficeBundle:Adherant:new }  
+    
+ 
+edit:
+    pattern:  /index/{id}
+    defaults: { _controller: BackOfficeBundle:Adherant:edit } 
+    
+utilisateurs:
+    pattern:  /utilisateurs
+    defaults: { _controller: BackOfficeBundle:Default:utilisateurs } 
+    
+bloquer:
+    pattern:  /bloquer/{id}
+    defaults: { _controller: BackOfficeBundle:Default:bloquer }
+    
+debloquer:
+    pattern:  /debloquer/{id}
+    defaults: { _controller: BackOfficeBundle:Default:debloquer } 
+
+

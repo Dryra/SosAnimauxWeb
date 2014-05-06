@@ -1,0 +1,39 @@
+<?php
+
+namespace SosAnimauxFront\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Admin
+ *
+ * @ORM\Table(name="admin")
+ * @ORM\Entity
+ */
+class Admin
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $login;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=50, nullable=false)
+     */
+    private $mdp;
+
+
+}

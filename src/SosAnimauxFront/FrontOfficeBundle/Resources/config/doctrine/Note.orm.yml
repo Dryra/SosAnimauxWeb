@@ -1,0 +1,33 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Note:
+    type: entity
+    table: note
+    indexes:
+        id_pension:
+            columns:
+                - id_pension
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        note:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idPension:
+            targetEntity: Pensions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pension:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

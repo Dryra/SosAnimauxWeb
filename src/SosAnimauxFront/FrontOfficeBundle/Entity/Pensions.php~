@@ -1,0 +1,84 @@
+<?php
+
+namespace SosAnimauxFront\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Pensions
+ *
+ * @ORM\Table(name="pensions", indexes={@ORM\Index(name="id_prest", columns={"id_prest", "adr", "tel", "prix_serv", "jour_disp"}), @ORM\Index(name="IDX_ABA78BB5D25A82E", columns={"id_prest"})})
+ * @ORM\Entity
+ */
+class Pensions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adr", type="string", length=30, nullable=false)
+     */
+    private $adr;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tel", type="integer", nullable=false)
+     */
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prix_serv", type="decimal", precision=5, scale=0, nullable=true)
+     */
+    private $prixServ;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jour_disp", type="string", length=50, nullable=true)
+     */
+    private $jourDisp;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix_pens", type="integer", nullable=false)
+     */
+    private $prixPens;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var \SosAnimauxFront\FrontOfficeBundle\Entity\Prestataire
+     *
+     * @ORM\ManyToOne(targetEntity="SosAnimauxFront\FrontOfficeBundle\Entity\Prestataire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_prest", referencedColumnName="id")
+     * })
+     */
+    private $idPrest;
+
+
+}

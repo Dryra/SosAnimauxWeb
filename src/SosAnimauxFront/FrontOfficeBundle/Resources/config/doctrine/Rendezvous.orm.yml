@@ -1,0 +1,52 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Rendezvous:
+    type: entity
+    table: rendezvous
+    indexes:
+        id_prest:
+            columns:
+                - id_prest
+        id_adh:
+            columns:
+                - id_adh
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateduree:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+        etat:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+    manyToOne:
+        idPrest:
+            targetEntity: Prestataire
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_prest:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAdh:
+            targetEntity: Adherant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_adh:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

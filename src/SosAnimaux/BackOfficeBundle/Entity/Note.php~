@@ -1,0 +1,98 @@
+<?php
+
+namespace SosAnimaux\BackOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Note
+ *
+ * @ORM\Table(name="note", indexes={@ORM\Index(name="id_pension", columns={"id_pension"})})
+ * @ORM\Entity
+ */
+class Note
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=false)
+     */
+    private $note;
+
+    /**
+     * @var \Pensions
+     *
+     * @ORM\ManyToOne(targetEntity="Pensions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pension", referencedColumnName="id")
+     * })
+     */
+    private $idPension;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     * @return Note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set idPension
+     *
+     * @param \SosAnimaux\BackOfficeBundle\Entity\Pensions $idPension
+     * @return Note
+     */
+    public function setIdPension(\SosAnimaux\BackOfficeBundle\Entity\Pensions $idPension = null)
+    {
+        $this->idPension = $idPension;
+
+        return $this;
+    }
+
+    /**
+     * Get idPension
+     *
+     * @return \SosAnimaux\BackOfficeBundle\Entity\Pensions 
+     */
+    public function getIdPension()
+    {
+        return $this->idPension;
+    }
+}

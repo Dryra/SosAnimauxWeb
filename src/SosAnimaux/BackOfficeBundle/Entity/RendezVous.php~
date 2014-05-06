@@ -1,0 +1,131 @@
+<?php
+
+namespace SosAnimaux\BackOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RendezVous
+ *
+ * @ORM\Table(name="rendez_vous", indexes={@ORM\Index(name="fk_id", columns={"id_adh"}), @ORM\Index(name="fk_id2", columns={"id_pens"})})
+ * @ORM\Entity
+ */
+class RendezVous
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_rdv", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRdv;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \Adherant
+     *
+     * @ORM\ManyToOne(targetEntity="Adherant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_adh", referencedColumnName="id")
+     * })
+     */
+    private $idAdh;
+
+    /**
+     * @var \Pensions
+     *
+     * @ORM\ManyToOne(targetEntity="Pensions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_pens", referencedColumnName="id_prest")
+     * })
+     */
+    private $idPens;
+
+
+
+    /**
+     * Get idRdv
+     *
+     * @return integer 
+     */
+    public function getIdRdv()
+    {
+        return $this->idRdv;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return RendezVous
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set idAdh
+     *
+     * @param \SosAnimaux\BackOfficeBundle\Entity\Adherant $idAdh
+     * @return RendezVous
+     */
+    public function setIdAdh(\SosAnimaux\BackOfficeBundle\Entity\Adherant $idAdh = null)
+    {
+        $this->idAdh = $idAdh;
+
+        return $this;
+    }
+
+    /**
+     * Get idAdh
+     *
+     * @return \SosAnimaux\BackOfficeBundle\Entity\Adherant 
+     */
+    public function getIdAdh()
+    {
+        return $this->idAdh;
+    }
+
+    /**
+     * Set idPens
+     *
+     * @param \SosAnimaux\BackOfficeBundle\Entity\Pensions $idPens
+     * @return RendezVous
+     */
+    public function setIdPens(\SosAnimaux\BackOfficeBundle\Entity\Pensions $idPens = null)
+    {
+        $this->idPens = $idPens;
+
+        return $this;
+    }
+
+    /**
+     * Get idPens
+     *
+     * @return \SosAnimaux\BackOfficeBundle\Entity\Pensions 
+     */
+    public function getIdPens()
+    {
+        return $this->idPens;
+    }
+}

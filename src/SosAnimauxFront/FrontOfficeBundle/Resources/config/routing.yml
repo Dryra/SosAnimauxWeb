@@ -1,0 +1,34 @@
+index:
+    pattern:  /index
+    defaults: { _controller: FrontOfficeBundle:Default:index }
+contact:
+    pattern:  /contact
+    defaults: { _controller: FrontOfficeBundle:Default:contact }
+about:
+    pattern:  /about
+    defaults: { _controller: FrontOfficeBundle:Default:about }
+    
+services:
+    pattern:  /services
+    defaults: { _controller: FrontOfficeBundle:Default:services }
+    
+profil:
+    pattern:  /profil
+    defaults: { _controller: FrontOfficeBundle:Default:profil }
+
+animaux:
+    pattern:  /animaux
+    defaults: { _controller: FrontOfficeBundle:Default:animaux }
+    
+adoption:
+    pattern:  /adoption
+    defaults: { _controller: FrontOfficeBundle:Default:Adoption }
+
+traitement:
+    pattern:  /traitement
+    defaults: { _controller: FrontOfficeBundle:traitement:traitement }
+    
+adopter:
+    pattern:  /adopter/{id}
+    defaults: { _controller: FrontOfficeBundle:Default:adopter }
+    

@@ -1,0 +1,69 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Reservation:
+    type: entity
+    table: reservation
+    indexes:
+        id_pens:
+            columns:
+                - id_pens
+                - id_adh
+                - id_prest
+        id_adh:
+            columns:
+                - id_adh
+        id_prest:
+            columns:
+                - id_prest
+        IDX_42C84955BD350CE6:
+            columns:
+                - id_pens
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateduree:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+        etat:
+            type: string
+            nullable: false
+            length: 3
+            fixed: false
+            comment: ''
+    manyToOne:
+        idPrest:
+            targetEntity: Prestataire
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_prest:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idPens:
+            targetEntity: Pensions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pens:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAdh:
+            targetEntity: Adherant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_adh:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

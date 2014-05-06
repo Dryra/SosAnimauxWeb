@@ -1,0 +1,77 @@
+SosAnimauxFront\FrontOfficeBundle\Entity\Pensions:
+    type: entity
+    table: pensions
+    indexes:
+        id_prest:
+            columns:
+                - id_prest
+                - adr
+                - tel
+                - prix_serv
+                - jour_disp
+        IDX_ABA78BB5D25A82E:
+            columns:
+                - id_prest
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        adr:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+        tel:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        prixServ:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 0
+            comment: ''
+            column: prix_serv
+        jourDisp:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: jour_disp
+        prixPens:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: prix_pens
+        nom:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+        note:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+    manyToOne:
+        idPrest:
+            targetEntity: Prestataire
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_prest:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
